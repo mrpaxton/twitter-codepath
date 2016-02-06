@@ -30,7 +30,12 @@ class ViewController: UIViewController {
             callbackURL: NSURL(string: "cptwitterdemo://oauth"),
             scope: nil,
             success: { (requestToken:BDBOAuth1Credential!) -> Void in
-                print("Got the request token")
+                //route to twitter api authorize page
+                let authURL = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken.token)" )
+                UIApplication.sharedApplication().openURL(authURL!)
+                
+                //route back to our page
+                
             },
             failure: { (error: NSError!) -> Void in
                 print("Falied to get request token")
