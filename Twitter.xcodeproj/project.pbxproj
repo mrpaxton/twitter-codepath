@@ -78,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				D03127D51C671E0A00E87FB8 /* TweetsViewController.swift */,
+				D0AE9D251C62E27400CF7EF6 /* ViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -115,7 +116,6 @@
 				D03127CF1C66D99300E87FB8 /* Models */,
 				D0A37BF51C62E8A5001205B6 /* API */,
 				D0AE9D231C62E27400CF7EF6 /* AppDelegate.swift */,
-				D0AE9D251C62E27400CF7EF6 /* ViewController.swift */,
 				D0AE9D271C62E27400CF7EF6 /* Main.storyboard */,
 				D0AE9D2A1C62E27400CF7EF6 /* Assets.xcassets */,
 				D0AE9D2C1C62E27400CF7EF6 /* LaunchScreen.storyboard */,

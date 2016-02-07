@@ -27,6 +27,21 @@ class TwitterClient: BDBOAuth1SessionManager {
         return Static.instance
     }
     
+    func homeTimelineWithParams(params: NSDictionary? , completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
+        GET("1.1/statuses/home_timeline.json",
+            parameters: params,
+            success: { (operation: NSURLSessionDataTask?, response: AnyObject?) -> Void in
+                //print("home timelines: \(response)")
+                let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
+                completion(tweets: tweets, error: nil)
+            },
+            failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
+                print("error getting timeline")
+                completion(tweets: nil, error: error)
+            }
+        )
+    }
+    
     func loginWithCompletion( completion: (user: User?, error: NSError?) -> ()) {
         loginCompletion = completion
         
@@ -75,16 +90,7 @@ class TwitterClient: BDBOAuth1SessionManager {
                     }
                 )
                 
-                TwitterClient.sharedInstance.GET("1.1/statuses/home_timeline.json",
-                    parameters: nil,
-                    success: { (operation: NSURLSessionDataTask?, response: AnyObject?) -> Void in
-                        //print("home timelines: \(response)")
-                        //let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
-                    },
-                    failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
-                        print("error getting timeline")
-                    }
-                )
+                
             },
             failure: { (error: NSError!) -> Void in
                 //print("Failed to receive access token")
