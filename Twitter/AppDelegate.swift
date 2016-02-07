@@ -42,42 +42,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    //after coming back from Twitter authorization - token obtained
-    @available(iOS, deprecated=8.0) //suppress warning on deprecated GET from BDBOAuth1Manager's GET method
+    //result of the oauth request - after coming back from Twitter authorization - token obtained
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        TwitterClient.sharedInstance.fetchAccessTokenWithPath("oauth/access_token",
-            method: "POST",
-            requestToken: BDBOAuth1Credential(queryString: url.query),
-            success: { (accessToken: BDBOAuth1Credential!) -> Void in
-                
-                TwitterClient.sharedInstance.requestSerializer.saveAccessToken(accessToken)
-                
-                TwitterClient.sharedInstance.GET("1.1/account/verify_credentials.json",
-                    parameters: nil,
-                    success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
-                        //print("user: \(response)")
-                        //save User
-                    },
-                    failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
-                        print("error getting current user")
-                    }
-                )
-                
-                TwitterClient.sharedInstance.GET("1.1/statuses/home_timeline.json",
-                    parameters: nil,
-                    success: { (operation: NSURLSessionDataTask?, response: AnyObject?) -> Void in
-                        //print("home timelines: \(response)")
-                        //let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
-                    },
-                    failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
-                        print("error getting timeline")
-                    }
-                )
-            },
-            failure: { (error: NSError!) -> Void in
-                print("Failed to receive access token")
-            }
-        )
+        TwitterClient.sharedInstance.openURL(url)
         return true
     }
 
