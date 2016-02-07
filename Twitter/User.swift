@@ -8,6 +8,9 @@
 
 import Foundation
 
+var _currentUser: User?
+let currentUserKey = "currentUserKey"
+
 class User: NSObject {
     
     var name: String?
@@ -26,39 +29,46 @@ class User: NSObject {
     }
     
     //check if user logged in
-    /*class var currentUser: User? {
-        
+    class var currentUser: User? {
         get {
-        if _currentUser == nil {
-        //logged out or just boot up
-        var data = NSUserDefaults.standardUserDefaults.objectForKey(currentUserKey)
-        if data != nil {
-        var dictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil)
-        _currentUser = User(dictionary: dictionary)
-        ...
-        }
-        }
-        return _currentUser
+            if _currentUser == nil {
+                //logged out or just boot up
+                let data = NSUserDefaults.standardUserDefaults().objectForKey(currentUserKey) as? NSData
+                if data != nil {
+                    let dictionary: NSDictionary?
+                    do {
+                        try dictionary = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary
+                        _currentUser = User(dictionary: dictionary!)
+                    } catch {
+                        print(error)
+                    }
         
+                }
+            }
+            return _currentUser
         }
+       
         set(user) {
             _currentUser = user
-            
             //User need to implement NSCoding
             //JSON also serialized by default
             //cheat a bit here
-            
             if _currentUser != nil {
-                var data = NSJSONSerialization.dataWithJSONObject(user?dictionary, options: nil, error: nil) {
-                    NSUserDefaults.standardUserDefaults.setObject(data, forKey: currentUser)
-                    else {
-                        
-                        NSUserDefaults.standardUserDefaults.setObject(nil, forKey: currentUser)
-                        NSUserDefaults.standardUserDefaults.synchonize
-                    }
+                var data: NSData?
+                do {
+                    try data = NSJSONSerialization.dataWithJSONObject(user!.dictionary, options: .PrettyPrinted)
+                    NSUserDefaults.standardUserDefaults().setObject(data, forKey: currentUserKey)
+                } catch {
+                    print(error)
                 }
+            } else {
+                //clear the currentUser data
+                NSUserDefaults.standardUserDefaults().setObject(nil, forKey: currentUserKey)
             }
-    */
-            
+            //flush to disk
+            //NSUserDefaults.standardUserDefaults().synchonize()
+        }
+    }
+    
 }
 

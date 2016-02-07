@@ -64,6 +64,10 @@ class TwitterClient: BDBOAuth1SessionManager {
                         //print("user: \(response)")
                         //create a User
                         let user = User(dictionary: response as! NSDictionary)
+                        //currently logged in user
+                        User.currentUser = user
+                        print("Current user: \(User.currentUser?.name)")
+                        
                         self.loginCompletion?(user: user, error: nil)                    },
                     failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
                         print("error getting current user")
