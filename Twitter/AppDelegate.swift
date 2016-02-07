@@ -43,12 +43,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //after coming back from anothe url
+    @available(iOS, deprecated=8.0) //suppress warning on deprecated GET from BDBOAuth1Manager's GET method
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         TwitterClient.sharedInstance.fetchAccessTokenWithPath("oauth/access_token",
             method: "POST",
             requestToken: BDBOAuth1Credential(queryString: url.query),
             success: { (accessToken: BDBOAuth1Credential!) -> Void in
-                print("Got access token")
+                
+                TwitterClient.sharedInstance.requestSerializer.saveAccessToken(accessToken)
+                
+                TwitterClient.sharedInstance.GET("1.1/account/verify_credentials.json",
+                    parameters: nil,
+                    success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+                        print("user: \(response)")
+                        //save User
+                    },
+                    failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
+                        print("error getting current user")
+                    }
+                )
             },
             failure: { (error: NSError!) -> Void in
                 print("Failed to receive access token")

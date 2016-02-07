@@ -24,5 +24,4 @@ class TwitterClient: BDBOAuth1SessionManager {
         }
         return Static.instance
     }
-
 }
