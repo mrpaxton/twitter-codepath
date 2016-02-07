@@ -8,14 +8,15 @@
 
 import Foundation
 
-
 class Tweet: NSObject {
+    
     var user: User?
     var text: String?
     var createdAtString: String?
     var createdAt: NSDate?
     
     init(dictionary: NSDictionary) {
+        
         user = User(dictionary: dictionary["user"] as! NSDictionary )
         text = dictionary["text"] as? String
         createdAtString = dictionary["created_at"] as? String
@@ -26,11 +27,6 @@ class Tweet: NSObject {
     }
     
     class func tweetsWithArray(array: [NSDictionary]) -> [Tweet] {
-        var tweets = [Tweet]()
-        
-        for dictionary in array {
-            tweets.append(Tweet(dictionary: dictionary))
-        }
-        return tweets
+        return array.map{ Tweet(dictionary: $0) }
     }
 }

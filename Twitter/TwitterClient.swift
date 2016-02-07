@@ -27,12 +27,14 @@ class TwitterClient: BDBOAuth1SessionManager {
         return Static.instance
     }
     
+    @available(iOS, deprecated=8.0) //suppress warning on deprecated GET from BDBOAuth1Manager's GET method
     func homeTimelineWithParams(params: NSDictionary? , completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
         GET("1.1/statuses/home_timeline.json",
             parameters: params,
             success: { (operation: NSURLSessionDataTask?, response: AnyObject?) -> Void in
                 //print("home timelines: \(response)")
                 let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
+                print(tweets)
                 completion(tweets: tweets, error: nil)
             },
             failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
@@ -53,7 +55,8 @@ class TwitterClient: BDBOAuth1SessionManager {
             scope: nil,
             success: { (requestToken:BDBOAuth1Credential!) -> Void in
                 //route to twitter api authorize page
-                let authURL = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken.token)" )
+                let authURL = NSURL(string:
+                    "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken.token)" )
                 UIApplication.sharedApplication().openURL(authURL!)
                 //route back to our page
             },

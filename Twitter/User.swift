@@ -27,21 +27,20 @@ class User: NSObject {
         screenName = dictionary["screen_name"] as? String
         profileImageUrl = dictionary["profile_image_url"] as? String
         tagline = dictionary["description"] as? String
-        
     }
     
     func logout() {
-        //clear current user
+        //Clear the current user
         User.currentUser = nil
         TwitterClient.sharedInstance.requestSerializer.removeAccessToken()
         
-        //use nsnotification to send out broadcast
-        //other part of app may be interested when user logged out
+        //Use NSNotification to broadcast so other part of app, interested when user logged out, knows
         NSNotificationCenter.defaultCenter().postNotificationName(userDidLogoutNotification, object: nil)
     }
     
-    //check if user logged in
+    //Check if user logged in
     class var currentUser: User? {
+        
         get {
             if _currentUser == nil {
                 //logged out or just boot up
@@ -62,7 +61,7 @@ class User: NSObject {
         set(user) {
             _currentUser = user
             //User need to implement NSCoding; but, JSON also serialized by default
-            if _currentUser != nil {
+            if let _ = _currentUser {
                 var data: NSData?
                 do {
                     try data = NSJSONSerialization.dataWithJSONObject(user!.dictionary, options: .PrettyPrinted)
@@ -71,11 +70,9 @@ class User: NSObject {
                     print(error)
                 }
             } else {
-                //clear the currentUser data
+                //Clear the currentUser data
                 NSUserDefaults.standardUserDefaults().setObject(nil, forKey: currentUserKey)
             }
-            //flush to disk
-            //NSUserDefaults.standardUserDefaults().synchonize()
         }
     }
 }

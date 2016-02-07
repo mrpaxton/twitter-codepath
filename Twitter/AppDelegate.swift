@@ -15,16 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var storyboard = UIStoryboard(name: "Main", bundle: nil)
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        //subscribe to userDidLogout event
+        //Subscribe to userDidLogout event
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
         
-        //check if there is a current user
-        if let user =  User.currentUser {
-            print("Current user: \(user)")
+        //Check if there is a current user
+        if let _ =  User.currentUser {
             let vc = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController")
             window?.rootViewController = vc
         }
@@ -32,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func userDidLogout() {
-        //reset the
+        //use the initial ViewController
         let vc = storyboard.instantiateInitialViewController()! as UIViewController
         window?.rootViewController = vc
     }
@@ -60,6 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //result of the oauth request - after coming back from Twitter authorization - token obtained
+    @available(iOS, deprecated=8.0) //suppress warning on deprecated openURL() method
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         TwitterClient.sharedInstance.openURL(url)
         return true
