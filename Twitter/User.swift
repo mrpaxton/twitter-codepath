@@ -10,6 +10,8 @@ import Foundation
 
 var _currentUser: User?
 let currentUserKey = "currentUserKey"
+let userDidLoginNotification = "userDidLoginNotification"
+let userDidLogoutNotification = "userDidLogoutNotification"
 
 class User: NSObject {
     
@@ -28,6 +30,16 @@ class User: NSObject {
         
     }
     
+    func logout() {
+        //clear current user
+        User.currentUser = nil
+        TwitterClient.sharedInstance.requestSerializer.removeAccessToken()
+        
+        //use nsnotification to send out broadcast
+        //other part of app may be interested when user logged out
+        NSNotificationCenter.defaultCenter().postNotificationName(userDidLogoutNotification, object: nil)
+    }
+    
     //check if user logged in
     class var currentUser: User? {
         get {
@@ -42,7 +54,6 @@ class User: NSObject {
                     } catch {
                         print(error)
                     }
-        
                 }
             }
             return _currentUser
@@ -50,9 +61,7 @@ class User: NSObject {
        
         set(user) {
             _currentUser = user
-            //User need to implement NSCoding
-            //JSON also serialized by default
-            //cheat a bit here
+            //User need to implement NSCoding; but, JSON also serialized by default
             if _currentUser != nil {
                 var data: NSData?
                 do {
@@ -69,6 +78,5 @@ class User: NSObject {
             //NSUserDefaults.standardUserDefaults().synchonize()
         }
     }
-    
 }
 
