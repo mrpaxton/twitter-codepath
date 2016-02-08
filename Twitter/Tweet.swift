@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class Tweet: NSObject {
     
@@ -17,7 +18,7 @@ class Tweet: NSObject {
     
     init(dictionary: NSDictionary) {
         
-        user = User(dictionary: dictionary["user"] as! NSDictionary )
+        user = User(jsonData: JSON( dictionary["user"]! ) )
         text = dictionary["text"] as? String
         createdAtString = dictionary["created_at"] as? String
         

@@ -8,6 +8,7 @@
 
 import UIKit
 import BDBOAuth1Manager
+import SwiftyJSON
 
 let twitterConsumerKey = "uFyblsq7DvCm7ZeaxGyDKtkE0"
 let twitterConsumerSecret = "YIK7em8WNQwGvk7SP5sf3EhtVw8iARaGL7C73avf5pCB2Owyfp"
@@ -79,9 +80,7 @@ class TwitterClient: BDBOAuth1SessionManager {
                 TwitterClient.sharedInstance.GET("1.1/account/verify_credentials.json",
                     parameters: nil,
                     success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
-                        //print("user: \(response)")
-                        //create a User
-                        let user = User(dictionary: response as! NSDictionary)
+                        let user = User(jsonData: JSON(response!) )
                         //currently logged in user
                         User.currentUser = user
                         print("Current user: \(User.currentUser?.name)")
@@ -92,8 +91,6 @@ class TwitterClient: BDBOAuth1SessionManager {
                         self.loginCompletion?(user: nil, error: error)
                     }
                 )
-                
-                
             },
             failure: { (error: NSError!) -> Void in
                 //print("Failed to receive access token")

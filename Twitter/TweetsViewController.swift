@@ -11,10 +11,11 @@ import UIKit
 class TweetsViewController: UIViewController {
     
     var tweets: [Tweet]?
-
+    
+    @available(iOS, deprecated=8.0) //suppress warning on deprecated GET from BDBOAuth1Manager's GET method
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         TwitterClient.sharedInstance.homeTimelineWithParams(nil , completion: { (tweets, error) -> () in
             self.tweets = tweets

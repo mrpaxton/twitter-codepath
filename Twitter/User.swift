@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 var _currentUser: User?
 let currentUserKey = "currentUserKey"
@@ -19,14 +20,20 @@ class User: NSObject {
     var screenName: String?
     var profileImageUrl: String?
     var tagline: String?
-    var dictionary: NSDictionary
+    var statusesCount: Int?
+    var friendsCount: Int?
+    var followersCount: Int?
+    var jsonData: JSON?
     
-    init(dictionary: NSDictionary) {
-        self.dictionary = dictionary
-        name = dictionary["name"] as? String
-        screenName = dictionary["screen_name"] as? String
-        profileImageUrl = dictionary["profile_image_url"] as? String
-        tagline = dictionary["description"] as? String
+    init(jsonData: JSON) {
+        self.jsonData = jsonData
+        name = jsonData["name"].stringValue
+        screenName = jsonData["screen_name"].stringValue
+        profileImageUrl = jsonData["profile_image_url"].stringValue
+        tagline = jsonData["description"].stringValue
+        followersCount = jsonData["followers_count"].intValue
+        friendsCount = jsonData["friends_count"].intValue
+        statusesCount = jsonData["statuses_count"].intValue
     }
     
     func logout() {
@@ -46,10 +53,13 @@ class User: NSObject {
                 //logged out or just boot up
                 let data = NSUserDefaults.standardUserDefaults().objectForKey(currentUserKey) as? NSData
                 if data != nil {
-                    let dictionary: NSDictionary?
+                    //let dictionary: NSDictionary?
+                    let dictionary: JSON?
                     do {
-                        try dictionary = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary
-                        _currentUser = User(dictionary: dictionary!)
+                        try dictionary = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? JSON
+                        if let _ = dictionary {
+                            _currentUser = User(jsonData: dictionary! )
+                        }
                     } catch {
                         print(error)
                     }
@@ -64,7 +74,7 @@ class User: NSObject {
             if let _ = _currentUser {
                 var data: NSData?
                 do {
-                    try data = NSJSONSerialization.dataWithJSONObject(user!.dictionary, options: .PrettyPrinted)
+                    try data = NSJSONSerialization.dataWithJSONObject(user!.jsonData!.dictionaryObject!, options: .PrettyPrinted)
                     NSUserDefaults.standardUserDefaults().setObject(data, forKey: currentUserKey)
                 } catch {
                     print(error)
