@@ -52,11 +52,10 @@ class User: NSObject {
             if _currentUser == nil {
                 //logged out or just boot up
                 let data = NSUserDefaults.standardUserDefaults().objectForKey(currentUserKey) as? NSData
-                if data != nil {
-                    //let dictionary: NSDictionary?
+                if let data = data {
                     let dictionary: JSON?
                     do {
-                        try dictionary = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? JSON
+                        try dictionary = NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? JSON
                         if let _ = dictionary {
                             _currentUser = User(jsonData: dictionary! )
                         }
