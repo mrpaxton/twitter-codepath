@@ -26,14 +26,17 @@ class ViewController: UIViewController {
     
     @IBAction func onLogin(sender: AnyObject) {
         //refactor client login
-        TwitterClient.sharedInstance.loginWithCompletion() {
-            (user: User?, error: NSError?) in
+        TwitterClient.sharedInstance.loginWithCompletion() { (user: User?, error: NSError?) in
             if let _ = user {
+                
                 //perform segue
                 self.performSegueWithIdentifier("loginSegue", sender: self)
+                
             } else {
+                
                 //handle login error
                 print("login error")
+                
             }
         }
     }

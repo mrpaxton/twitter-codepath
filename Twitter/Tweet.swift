@@ -49,6 +49,7 @@ class Tweet: NSObject {
     }
     
     class func tweetsWithArray(array: [NSDictionary]) -> [Tweet] {
+        //array.forEach{ print($0.text) }
         return array.map{ Tweet(jsonData: JSON($0)) }
     }
 }

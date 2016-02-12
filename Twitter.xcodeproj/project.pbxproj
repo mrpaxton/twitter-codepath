@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0EFA5AD9A059AC493E5EC93B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85132B8B28FA82B1B9E977EE /* Pods.framework */; };
+		D017E46A1C6C8C9600B52ED5 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D017E4691C6C8C9600B52ED5 /* TweetCell.swift */; };
 		D03127D11C66D9A600E87FB8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03127D01C66D9A600E87FB8 /* User.swift */; };
 		D03127D31C66D9B700E87FB8 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03127D21C66D9B700E87FB8 /* Tweet.swift */; };
 		D03127D61C671E0A00E87FB8 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03127D51C671E0A00E87FB8 /* TweetsViewController.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		85132B8B28FA82B1B9E977EE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B31883D0F300465BE41611A3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D017E4691C6C8C9600B52ED5 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		D03127D01C66D9A600E87FB8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D03127D21C66D9B700E87FB8 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		D03127D51C671E0A00E87FB8 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			children = (
 				D03127D51C671E0A00E87FB8 /* TweetsViewController.swift */,
 				D0AE9D251C62E27400CF7EF6 /* ViewController.swift */,
+				D017E4691C6C8C9600B52ED5 /* TweetCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D03127D11C66D9A600E87FB8 /* User.swift in Sources */,
+				D017E46A1C6C8C9600B52ED5 /* TweetCell.swift in Sources */,
 				D03127D31C66D9B700E87FB8 /* Tweet.swift in Sources */,
 				D03127D61C671E0A00E87FB8 /* TweetsViewController.swift in Sources */,
 				D0AE9D261C62E27400CF7EF6 /* ViewController.swift in Sources */,
