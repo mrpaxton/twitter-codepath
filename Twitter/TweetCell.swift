@@ -18,7 +18,18 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var retweetCountLabel: UILabel!
     @IBOutlet weak var favouriteCountLabel: UILabel!
     
-    
+    var tweet: Tweet! {
+        didSet {
+            let url = NSURL( string: ( tweet.user?.profileImageUrl!)! )
+            print(url!)
+            profileImage.setImageWithURL(url!)//, placeholderImage: UIImage(named: "TwitterLogoBlue")!)
+            screenNameLabel.text = "@\((tweet.user?.screenName)!)"
+            nameLabel.text = tweet.user?.name
+            tweetTextLabel.text = tweet.text
+            retweetCountLabel.text = String(tweet.retweetCount)
+            favouriteCountLabel.text = String(tweet.favouriteCount)
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
