@@ -12,6 +12,7 @@ import SwiftyJSON
 class Tweet: NSObject {
     
     var user: User?
+    var id: Int?
     var text: String?
     var createdAtString: String?
     var createdAt: NSDate?
@@ -35,6 +36,7 @@ class Tweet: NSObject {
     init(jsonData: JSON) {
         
         user = User(jsonData: jsonData["user"]  )
+        id = jsonData["id"].intValue
         text = jsonData["text"].stringValue
         createdAtString = jsonData["created_at"].stringValue
         favouriteCount = jsonData["favourite_count"].intValue
@@ -45,6 +47,7 @@ class Tweet: NSObject {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
         createdAt = formatter.dateFromString(createdAtString!)
+        
     }
     
     class func tweetsWithArray(array: [NSDictionary]) -> [Tweet] {
