@@ -2,44 +2,45 @@
 
 **MyTwitter** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **** hours spent in total
+Time spent: 20 hours spent in total
 
 ## User Stories
 
 The following **required** functionality is completed:
 
-- [ ] User can sign in using OAuth login flow
-- [ ] User can view last 20 tweets from their home timeline
-- [ ] The current signed in user will be persisted across restarts
-- [ ] In the home timeline, user can view tweet with the user profile picture, username, tweet text, and timestamp.
-- [ ] Retweeting and favoriting should increment the retweet and favorite count.
+- [x] User can sign in using OAuth login flow
+- [x] User can view last 20 tweets from their home timeline
+- [x] The current signed in user will be persisted across restarts
+- [x] In the home timeline, user can view tweet with the user profile picture, username, tweet text, and timestamp.
+- [x] Retweeting and favoriting should increment the retweet and favorite count.
 
 The following **optional** features are implemented:
 
-- [ ] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
+- [x] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
 - [ ] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count.
-- [ ] User can pull to refresh.
+- [x] User can pull to refresh.
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] Support for retweet, favorite, and unfavorite and decrement the favorite count
+- [x] Support for duration of differnce between the timestamp and now (ex: 3m, 5h, 12d, etc)
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1. 
-2. 
+1. Changes in TwitterClient and APIs
+2. Parsing JSON
 
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
 
-
+![ALT TEXT](twitter1-walkthrough.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+There are many changes in TwitterClient, making week4 material outdated.  We spent hours to figure out how to connect with Twitter APIs using its client.  There are also many deprecated codes in the library.
 
 ## License
 
