@@ -94,7 +94,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func onRefresh() {
-        delay(5, closure: {
+        delay(2, closure: {
             self.refreshControl.endRefreshing()
         })
     }

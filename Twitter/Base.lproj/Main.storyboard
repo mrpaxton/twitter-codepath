@@ -17,15 +17,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TwitterLogoWhite" translatesAutoresizingMaskIntoConstraints="NO" id="uWX-ab-f0A">
+                                <rect key="frame" x="102" y="153" width="150" height="150"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ir6-gq-UCV">
-                                <rect key="frame" x="90" y="161" width="138" height="44"/>
-                                <state key="normal" title="Login with Twitter"/>
+                                <rect key="frame" x="108" y="311" width="138" height="44"/>
+                                <state key="normal" title="Login with Twitter">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="onLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gIw-pl-du1"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.1758903604" green="0.28116916349999999" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <segue destination="thX-H6-h4q" kind="modal" identifier="loginSegue" id="snE-Lr-5bd"/>
@@ -219,5 +224,6 @@
         <image name="ReplyIcon" width="32" height="36"/>
         <image name="RetweetIcon" width="37" height="36"/>
         <image name="TwitterLogoBlue" width="843" height="843"/>
+        <image name="TwitterLogoWhite" width="843" height="843"/>
     </resources>
 </document>
