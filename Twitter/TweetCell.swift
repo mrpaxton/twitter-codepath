@@ -32,7 +32,7 @@ class TweetCell: UITableViewCell {
             tweetId = tweet.id
             let url = NSURL( string: ( tweet.user?.profileImageUrl!)! )
             print(url!)
-            profileImage.setImageWithURL(url!)//, placeholderImage: UIImage(named: "TwitterLogoBlue")!)
+            profileImage.setImageWithURL(url!)
             screenNameLabel.text = "@\((tweet.user?.screenName)!)"
             nameLabel.text = tweet.user?.name
             tweetTextLabel.text = tweet.text
@@ -47,20 +47,22 @@ class TweetCell: UITableViewCell {
         //TODO: create a reply feature
     }
     
+    @available(iOS, deprecated=8.0)
     @IBAction func onRetweet(sender: AnyObject) {
         if !didRetweet {
             //perform retweet logics
-            
-            //increment the retweet count
-            self.tweet.retweetCount! += 1
+            TwitterClient.sharedInstance.retweetStatus(tweetId) { error in
+                self.tweet.retweetCount! += 1
+                self.retweetButton.setImage(UIImage(named: "RetweetIconOn"), forState: .Normal)
+                self.retweetCountLabel.text = "\(self.tweet.retweetCount!)"
+                self.didRetweet = true
+            }
         } else {
             //un retweet, if successful, decrement
-            
+            TwitterClient.sharedInstance.unretweetStatus(tweetId) { error in
+                
+            }
         }
-        
-        //update text label
-        retweetCountLabel.text = "\(tweet.retweetCount!)"
-        
     }
     
     func durationString(createdAt: NSDate?) -> String {
@@ -76,25 +78,26 @@ class TweetCell: UITableViewCell {
         }
     }
     
+    @available(iOS, deprecated=8.0)
     @IBAction func onFavourite(sender: AnyObject) {
+        
         if !didTouchFavourite {
-            didTouchFavourite = true
-            self.tweet.favouriteCount! += 1
-            //change color of the button to red
-            favouriteButton.setImage(UIImage(named: "LikeIconOn"), forState: .Normal)
-            
-        } else {
-            //unFavourite
-            TwitterClient.sharedInstance.unfavoriteStatus(tweetId) { error in
-                //update favouriteCount
-                
+            //call favourite
+            TwitterClient.sharedInstance.favoriteStatus(tweetId) { errror in
+                self.didTouchFavourite = true
+                self.tweet.favouriteCount! += 1
+                self.favouriteButton.setImage(UIImage(named: "LikeIconOn"), forState: .Normal)
+                self.favouriteCountLabel.text = "\(self.tweet.favouriteCount!)"
             }
-            didTouchFavourite = false
-            self.tweet.favouriteCount! -= 1
-            //change color of the button to gray
-            favouriteButton.setImage(UIImage(named: "LikeIcon"), forState: .Normal)
+        } else {
+            //call unfavouriteStatus
+            TwitterClient.sharedInstance.unfavoriteStatus(tweetId) { error in
+                self.didTouchFavourite = false
+                self.tweet.favouriteCount! -= 1
+                self.favouriteButton.setImage(UIImage(named: "LikeIcon"), forState: .Normal)
+                self.favouriteCountLabel.text = "\(self.tweet.favouriteCount!)"
+            }
         }
-        favouriteCountLabel.text = "\(tweet.favouriteCount!)"
     }
     
     

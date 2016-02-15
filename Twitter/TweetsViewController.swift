@@ -26,9 +26,6 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     var loadMoreOffset = 20
     
-    
-
-    
     //infinite scroll
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if !isMoreDataLoading {

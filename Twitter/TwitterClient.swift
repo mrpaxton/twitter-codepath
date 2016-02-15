@@ -44,10 +44,9 @@ class TwitterClient: BDBOAuth1SessionManager {
                 completion(tweets: nil, error: error)
             }
         )
-    }
+    }    
     
-    
-    
+    @available(iOS, deprecated=8.0)
     func favoriteStatus(tweetID: Int, completion: (error: NSError?) -> ()) {
         POST("/1.1/favorites/create.json", parameters: ["id": tweetID], success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
             completion(error: nil)
@@ -56,6 +55,7 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    @available(iOS, deprecated=8.0)
     func unfavoriteStatus(tweetID: Int, completion: (error: NSError?) -> ()) {
         POST("/1.1/favorites/destroy.json", parameters: ["id": tweetID], success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
             completion(error: nil)
@@ -64,6 +64,7 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    @available(iOS, deprecated=8.0)
     func retweetStatus(tweetID: Int, completion: (retweetedTweetID: Int?, error: NSError?) -> ()) {
         POST("/1.1/statuses/retweet/\(tweetID).json", parameters: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
             //let tweetArray = Tweet.tweetsfromJSON(JSON(response))
@@ -73,6 +74,7 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    @available(iOS, deprecated=8.0)
     func unretweetStatus(retweetedTweetID: Int, completion: (error: NSError?) -> ()) {
         POST("/1.1/statuses/destroy/\(retweetedTweetID).json", parameters: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
             completion(error: nil)
@@ -80,8 +82,6 @@ class TwitterClient: BDBOAuth1SessionManager {
                 completion(error: err)
         })
     }
-    
-    
     
     func loginWithCompletion( completion: (user: User?, error: NSError?) -> ()) {
         loginCompletion = completion
