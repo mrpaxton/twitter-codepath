@@ -16,24 +16,50 @@ let userDidLogoutNotification = "userDidLogoutNotification"
 
 class User: NSObject {
     
+    let id: Int?
+    let idStr: String?
     var name: String?
     var screenName: String?
+    var location: String?
+    var userDescription: String?
+    var userURL: String?
     var profileImageUrl: String?
-    var tagline: String?
+    //var tagline: String?
     var statusesCount: Int?
     var friendsCount: Int?
     var followersCount: Int?
+    var createdAt: NSDate?
+    var favouritesCount: Int?
     var jsonData: JSON?
     
     init(jsonData: JSON) {
         self.jsonData = jsonData
+        
+        id = jsonData["id"].intValue
+        idStr = jsonData["id_str"].stringValue
         name = jsonData["name"].stringValue
         screenName = jsonData["screen_name"].stringValue
+        location = jsonData["location"].stringValue
+        userDescription = jsonData["description"].stringValue
+        userURL = jsonData["url"].stringValue
         profileImageUrl = jsonData["profile_image_url"].stringValue
-        tagline = jsonData["description"].stringValue
-        followersCount = jsonData["followers_count"].intValue
-        friendsCount = jsonData["friends_count"].intValue
+        //tagline = jsonData["description"].stringValue
         statusesCount = jsonData["statuses_count"].intValue
+        friendsCount = jsonData["friends_count"].intValue
+        followersCount = jsonData["followers_count"].intValue
+        createdAt = User.stringToNSDate( jsonData["created_at"].stringValue )
+        favouritesCount = jsonData["favourites_count"].intValue
+        
+        
+    }
+    
+    class func stringToNSDate(dateString: String) -> NSDate {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "eee MMM dd HH:mm:ss ZZZZ yyyy"
+        let resultDate = dateFormatter.dateFromString(dateString)!
+        dateFormatter.dateFormat = "eee MMM dd yyyy"
+        
+        return resultDate
     }
     
     func logout() {

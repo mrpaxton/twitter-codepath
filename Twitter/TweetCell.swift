@@ -9,6 +9,10 @@
 import UIKit
 import SwiftMoment
 
+protocol TweetCellDelegate {
+    func tweetCell( tweetCell: TweetCell, didUpdateTweetCell tweetUpdated:Bool )
+}
+
 class TweetCell: UITableViewCell {
     
     @IBOutlet weak var profileImage: UIImageView!
@@ -24,6 +28,8 @@ class TweetCell: UITableViewCell {
     
     var didRetweet = false
     var didTouchFavourite = false
+    
+    var delegate: TweetCellDelegate?
     
     var tweetId: Int!
     
@@ -84,10 +90,18 @@ class TweetCell: UITableViewCell {
         if !didTouchFavourite {
             //call favourite
             TwitterClient.sharedInstance.favoriteStatus(tweetId) { errror in
+                //toggle button
                 self.didTouchFavourite = true
+                //increment count
                 self.tweet.favouriteCount! += 1
+                //swap button image
                 self.favouriteButton.setImage(UIImage(named: "LikeIconOn"), forState: .Normal)
+                //reset favouriteCount
+                self.tweet.favouriteCount = self.tweet.favouriteCount < 0 ? 0 : self.tweet.favouriteCount
+                //update favourite count label
                 self.favouriteCountLabel.text = "\(self.tweet.favouriteCount!)"
+                //delegate
+                self.delegate?.tweetCell(self, didUpdateTweetCell: true)
             }
         } else {
             //call unfavouriteStatus
@@ -95,6 +109,7 @@ class TweetCell: UITableViewCell {
                 self.didTouchFavourite = false
                 self.tweet.favouriteCount! -= 1
                 self.favouriteButton.setImage(UIImage(named: "LikeIcon"), forState: .Normal)
+                self.tweet.favouriteCount = self.tweet.favouriteCount < 0 ? 0 : self.tweet.favouriteCount
                 self.favouriteCountLabel.text = "\(self.tweet.favouriteCount!)"
             }
         }

@@ -9,7 +9,12 @@
 import UIKit
 import AFNetworking
 
-class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TweetCellDelegate {
+    
+    func tweetCell(tweetCell: TweetCell, didUpdateTweetCell tweetUpdated: Bool) {
+        print("tweetCell favourite incremented")
+        print(tweetCell.tweet.user?.createdAt!)
+    }
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -138,10 +143,9 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
             let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath)  as! TweetCell
             cell.tweet = tweets![indexPath.row]
+            cell.delegate = self
             return cell
     }
-    
-    
 
     @IBAction func onLogout(sender: AnyObject) {
         

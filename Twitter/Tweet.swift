@@ -18,8 +18,8 @@ class Tweet: NSObject {
     var createdAt: NSDate?
     var favouriteCount: Int?
     var retweetCount: Int?
-    var isFavourite: Bool?
-    var isRetweeted: Bool?
+    var favourited: Bool?
+    var retweeted: Bool?
     
     
 //    init(dictionary: NSDictionary) {
@@ -36,13 +36,14 @@ class Tweet: NSObject {
     init(jsonData: JSON) {
         
         user = User(jsonData: jsonData["user"]  )
+        
         id = jsonData["id"].intValue
         text = jsonData["text"].stringValue
         createdAtString = jsonData["created_at"].stringValue
         favouriteCount = jsonData["favourite_count"].intValue
         retweetCount = jsonData["retweet_count"].intValue
-        isFavourite = jsonData["favourited"].boolValue
-        isRetweeted = jsonData["retweeted"].boolValue
+        favourited = jsonData["favourited"].boolValue
+        retweeted = jsonData["retweeted"].boolValue
         
         let formatter = NSDateFormatter()
         formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
