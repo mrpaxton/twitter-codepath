@@ -2,16 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "LikeIconOn.png"
     },
     {
       "idiom" : "universal",
-      "filename" : "like-action-on.png",
+      "filename" : "LikeIconOn@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "LikeIconOn@3x.png"
     }
   ],
   "info" : {

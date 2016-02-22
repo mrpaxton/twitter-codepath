@@ -2,16 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "TwitterLogoWhite.png"
     },
     {
       "idiom" : "universal",
-      "filename" : "TwitterLogo_white.png",
+      "filename" : "TwitterLogoWhite@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "TwitterLogoWhite@3x.png"
     }
   ],
   "info" : {

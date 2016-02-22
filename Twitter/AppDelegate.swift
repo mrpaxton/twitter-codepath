@@ -74,12 +74,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //first tab item
         let tweetsViewController = storyboard.instantiateViewControllerWithIdentifier("TwitterNavigationController") as! UINavigationController
         tweetsViewController.tabBarItem.title = "Timeline"
-        tweetsViewController.tabBarItem.image = UIImage(named: "TwitterLogoBlueSmall")
+        tweetsViewController.tabBarItem.image = UIImage(named: "TimelineIcon")
         
         //second tab item
         let profileViewController = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController")
         profileViewController.tabBarItem.title = "Profile"
-        profileViewController.tabBarItem.image = UIImage(named: "TwitterLogoBlueSmall")
+        profileViewController.tabBarItem.image = UIImage(named: "ProfileIcon")
         
         
         let tabBarController = UITabBarController()
