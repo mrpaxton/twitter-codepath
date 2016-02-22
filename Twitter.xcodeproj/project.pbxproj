@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0EFA5AD9A059AC493E5EC93B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85132B8B28FA82B1B9E977EE /* Pods.framework */; };
+		D01259581C7B2AB70051158F /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01259571C7B2AB70051158F /* FriendsViewController.swift */; };
 		D017E46A1C6C8C9600B52ED5 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D017E4691C6C8C9600B52ED5 /* TweetCell.swift */; };
 		D01D09E61C702F29007C029A /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D09E51C702F29007C029A /* InfiniteScrollActivityView.swift */; };
 		D03127D11C66D9A600E87FB8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03127D01C66D9A600E87FB8 /* User.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		85132B8B28FA82B1B9E977EE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B31883D0F300465BE41611A3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D01259571C7B2AB70051158F /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		D017E4691C6C8C9600B52ED5 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		D01D09E51C702F29007C029A /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
 		D03127D01C66D9A600E87FB8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				D0AE9D251C62E27400CF7EF6 /* ViewController.swift */,
 				D017E4691C6C8C9600B52ED5 /* TweetCell.swift */,
 				D0CEFC9F1C7ACFA000BCB204 /* ProfileViewController.swift */,
+				D01259571C7B2AB70051158F /* FriendsViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				D03127D31C66D9B700E87FB8 /* Tweet.swift in Sources */,
 				D03127D61C671E0A00E87FB8 /* TweetsViewController.swift in Sources */,
 				D0AE9D261C62E27400CF7EF6 /* ViewController.swift in Sources */,
+				D01259581C7B2AB70051158F /* FriendsViewController.swift in Sources */,
 				D0CEFCA01C7ACFA000BCB204 /* ProfileViewController.swift in Sources */,
 				D0A37BF71C62E8CD001205B6 /* TwitterClient.swift in Sources */,
 				D0AE9D241C62E27400CF7EF6 /* AppDelegate.swift in Sources */,
