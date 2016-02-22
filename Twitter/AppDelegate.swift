@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        initializeTabBar()
+
+        
         //Subscribe to userDidLogout event
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
         
@@ -25,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let _ =  User.currentUser {
             let vc = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController")
             window?.rootViewController = vc
+            
+            
         }
         return true
     }
@@ -62,6 +67,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         TwitterClient.sharedInstance.openURL(url)
         return true
+    }
+    
+    
+    func initializeTabBar() {
+        //first tab item
+        let tweetsViewController = storyboard.instantiateViewControllerWithIdentifier("TwitterNavigationController") as! UINavigationController
+        tweetsViewController.tabBarItem.title = "Timeline"
+        tweetsViewController.tabBarItem.image = UIImage(named: "TwitterLogoBlueSmall")
+        
+        //second tab item
+        let profileViewController = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController")
+        profileViewController.tabBarItem.title = "Profile"
+        profileViewController.tabBarItem.image = UIImage(named: "TwitterLogoBlueSmall")
+        
+        
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [tweetsViewController, profileViewController]
+         tabBarController.tabBar.barTintColor = UIColor.whiteColor()
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
     }
 
 

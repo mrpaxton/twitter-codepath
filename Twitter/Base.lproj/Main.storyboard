@@ -8,7 +8,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0Co-zt-UoB"/>
                         <viewControllerLayoutGuide type="bottom" id="8GQ-7h-nLS"/>
@@ -39,6 +39,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="109" y="321"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Z15-sZ-Zch">
+            <objects>
+                <viewController storyboardIdentifier="ProfileViewController" id="tQS-Rz-j3S" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YV9-pD-Hbu"/>
+                        <viewControllerLayoutGuide type="bottom" id="72m-yE-gSu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Zt-vd-PVl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ProfileViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAi-Ow-Bu1">
+                                <rect key="frame" x="69" y="183" width="161" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="np0-LF-byO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ce3-k9-uDj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1102" y="982"/>
         </scene>
         <!--Home-->
         <scene sceneID="ATw-gQ-hHo">
@@ -191,7 +218,10 @@
                             <constraint firstItem="eVD-nj-Q98" firstAttribute="top" secondItem="JWH-y7-ElF" secondAttribute="bottom" id="eal-c9-3p1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="UcJ-2V-zph"/>
+                    <navigationItem key="navigationItem" title="Home" id="UcJ-2V-zph">
+                        <barButtonItem key="leftBarButtonItem" image="FindPeopleIcon" id="8x0-AY-CUH"/>
+                        <barButtonItem key="rightBarButtonItem" image="ComposeIcon" id="5tS-sY-fx1"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="JWH-y7-ElF" id="WDN-bw-jSy"/>
                     </connections>
@@ -203,7 +233,7 @@
         <!--Navigation Controller-->
         <scene sceneID="LSd-1C-wy6">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="thX-H6-h4q" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TwitterNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="thX-H6-h4q" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qgH-64-A6M">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -220,6 +250,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ComposeIcon" width="25" height="25"/>
+        <image name="FindPeopleIcon" width="25" height="25"/>
         <image name="LikeIcon" width="27" height="36"/>
         <image name="ReplyIcon" width="32" height="36"/>
         <image name="RetweetIcon" width="37" height="36"/>

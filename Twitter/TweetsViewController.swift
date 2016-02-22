@@ -132,6 +132,9 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
         pullToRefreshControl()
         setupInfiniteScrollView()
+        
+        
+        self.navigationItem.titleView = UIImageView(image: UIImage(named: "TwitterLogoBlueSmall"))
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
