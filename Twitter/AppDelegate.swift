@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Check if there is a current user
         if let _ =  User.currentUser {
+            
             let vc = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as! UINavigationController
             
             window?.rootViewController = vc
@@ -77,9 +78,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tweetsViewController.tabBarItem.image = UIImage(named: "TimelineIcon")
         
         //second tab item
-        let profileViewController = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController")
-        profileViewController.tabBarItem.title = "Profile"
-        profileViewController.tabBarItem.image = UIImage(named: "ProfileIcon")
+        let profileViewController = storyboard.instantiateViewControllerWithIdentifier("MeViewController")
+        profileViewController.tabBarItem.title = "Me"
+        profileViewController.tabBarItem.image = UIImage(named: "MeIcon")
         
         
         let tabBarController = UITabBarController()
