@@ -20,6 +20,7 @@
 		D0AE9D291C62E27400CF7EF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0AE9D271C62E27400CF7EF6 /* Main.storyboard */; };
 		D0AE9D2B1C62E27400CF7EF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0AE9D2A1C62E27400CF7EF6 /* Assets.xcassets */; };
 		D0AE9D2E1C62E27400CF7EF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0AE9D2C1C62E27400CF7EF6 /* LaunchScreen.storyboard */; };
+		D0B93ECC1C82EA430012104C /* TweetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B93ECB1C82EA430012104C /* TweetDetailsViewController.swift */; };
 		D0CEFCA01C7ACFA000BCB204 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CEFC9F1C7ACFA000BCB204 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		D0AE9D2A1C62E27400CF7EF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0AE9D2D1C62E27400CF7EF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0AE9D2F1C62E27400CF7EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0B93ECB1C82EA430012104C /* TweetDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetDetailsViewController.swift; sourceTree = "<group>"; };
 		D0CEFC9F1C7ACFA000BCB204 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F5CCAFA9476F15B3F4DC1D02 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +100,7 @@
 				D017E4691C6C8C9600B52ED5 /* TweetCell.swift */,
 				D0CEFC9F1C7ACFA000BCB204 /* ProfileViewController.swift */,
 				D01259571C7B2AB70051158F /* FriendsViewController.swift */,
+				D0B93ECB1C82EA430012104C /* TweetDetailsViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				D03127D11C66D9A600E87FB8 /* User.swift in Sources */,
 				D017E46A1C6C8C9600B52ED5 /* TweetCell.swift in Sources */,
 				D03127D31C66D9B700E87FB8 /* Tweet.swift in Sources */,
+				D0B93ECC1C82EA430012104C /* TweetDetailsViewController.swift in Sources */,
 				D03127D61C671E0A00E87FB8 /* TweetsViewController.swift in Sources */,
 				D0AE9D261C62E27400CF7EF6 /* ViewController.swift in Sources */,
 				D01259581C7B2AB70051158F /* FriendsViewController.swift in Sources */,

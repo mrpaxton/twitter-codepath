@@ -19,14 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         initializeTabBar()
-
         
         //Subscribe to userDidLogout event
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
         
         //Check if there is a current user
         if let _ =  User.currentUser {
-            let vc = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController")
+            let vc = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as! UINavigationController
+            
             window?.rootViewController = vc
             
             
