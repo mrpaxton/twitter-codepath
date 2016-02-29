@@ -142,13 +142,23 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8W-gH-WuA">
-                                <rect key="frame" x="15" y="102" width="70" height="70"/>
-                                <state key="normal" title="Button" image="TwitterLogoBlue"/>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TwitterLogoBlueSmall" translatesAutoresizingMaskIntoConstraints="NO" id="wBb-bI-QAw">
+                                <rect key="frame" x="15" y="94" width="70" height="70"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="handleLabel" destination="Dft-vK-4cP" id="6Nv-GT-6zH"/>
+                        <outlet property="headerImageView" destination="qL2-iC-uTQ" id="oYc-tF-qDN"/>
+                        <outlet property="locationLabel" destination="dnm-nN-vpL" id="pKg-VE-AXG"/>
+                        <outlet property="nameLabel" destination="Vz4-Aa-aJe" id="tBs-yT-ZYo"/>
+                        <outlet property="numberFollowers" destination="3rW-SC-mhO" id="TaL-rN-XeL"/>
+                        <outlet property="numberFollowings" destination="n6S-cq-Rno" id="EN1-A6-sTS"/>
+                        <outlet property="numberTweets" destination="HFl-4S-lC7" id="i4U-7V-gVc"/>
+                        <outlet property="profileThumbImageView" destination="wBb-bI-QAw" id="3xX-rF-Jmu"/>
+                        <outlet property="userDescriptionLabel" destination="azo-Yg-zTD" id="6Ec-xz-PrX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmF-9B-mkR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -578,6 +588,7 @@
         <image name="ReplyIcon" width="32" height="36"/>
         <image name="RetweetIcon" width="37" height="36"/>
         <image name="TwitterLogoBlue" width="843" height="843"/>
+        <image name="TwitterLogoBlueSmall" width="38" height="38"/>
         <image name="TwitterLogoWhite" width="843" height="843"/>
     </resources>
     <inferredMetricsTieBreakers>

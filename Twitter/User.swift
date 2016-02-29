@@ -24,6 +24,7 @@ class User: NSObject {
     var userDescription: String?
     var userURL: String?
     var profileImageUrl: String?
+    var profileBannerImageUrl: String?
     //var tagline: String?
     var statusesCount: Int?
     var friendsCount: Int?
@@ -43,6 +44,7 @@ class User: NSObject {
         userDescription = jsonData["description"].stringValue
         userURL = jsonData["url"].stringValue
         profileImageUrl = jsonData["profile_image_url"].stringValue
+        profileImageUrl = jsonData["profile_banner_url"].stringValue
         //tagline = jsonData["description"].stringValue
         statusesCount = jsonData["statuses_count"].intValue
         friendsCount = jsonData["friends_count"].intValue
