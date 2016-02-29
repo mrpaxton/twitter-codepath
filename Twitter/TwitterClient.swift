@@ -45,6 +45,19 @@ class TwitterClient: BDBOAuth1SessionManager {
             }
         )
     }    
+    @available(iOS, deprecated=8.0)
+    func postTweet(status: String) {
+        let params = ["status": status]
+        
+        POST("1.1/statuses/update.json",
+            parameters: params,
+            success: {(operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+                print("Posted status: \(status)")
+            },
+            failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
+                print("Failed to post status with text:\(status)")
+        })
+    }
     
     @available(iOS, deprecated=8.0)
     func favoriteStatus(tweetID: Int, completion: (error: NSError?) -> ()) {

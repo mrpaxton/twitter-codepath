@@ -10,7 +10,8 @@ import UIKit
 
 class TweetDetailsViewController: UIViewController {
     
-    @IBOutlet weak var userImageThubButton: UIButton!
+    
+    @IBOutlet weak var profileThumbImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var handleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
@@ -36,6 +37,10 @@ class TweetDetailsViewController: UIViewController {
         handleLabel.text = "@\(user.screenName!)"
         if let url = tweet.mediaURL {
             userProfileImageView.setImageWithURL(url)
+        }
+        
+        if let urlString = tweet.user?.profileImageUrl {
+            profileThumbImageView.setImageWithURL(NSURL(string: urlString )!)
         }
         
         customizeFrame(userProfileImageView)

@@ -11,6 +11,7 @@ import SwiftMoment
 
 protocol TweetCellDelegate {
     func tweetCell( tweetCell: TweetCell, didUpdateTweetCell tweetUpdated:Bool )
+    func didReply(tweetCell: TweetCell)
 }
 
 class TweetCell: UITableViewCell {
@@ -50,6 +51,7 @@ class TweetCell: UITableViewCell {
 
     @IBAction func onReply(sender: AnyObject) {
         print("onReply clicked")
+        self.delegate?.didReply(self)
         //TODO: create a reply feature
     }
     

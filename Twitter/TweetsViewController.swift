@@ -19,6 +19,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableView: UITableView!
     
     var tweets: [Tweet]?
+    var userScreenName: String?
     
     
     var refreshControl: UIRefreshControl!
@@ -172,16 +173,17 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             detailsViewController.tweet = tweets![indexPath!.row]
             detailsViewController.user = tweets![indexPath!.row].user!
         }
+        
+        if segue.identifier == "replyFromHomeSegue" {
+            let composeViewController = segue.destinationViewController as! ComposeViewController
+            composeViewController.replyToUserScreenName = userScreenName
+        }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func didReply(tweetCell: TweetCell) {
+        print("Did Reply")
+        // get the selected user screen name
+        userScreenName = tweetCell.tweet.user?.screenName
+        performSegueWithIdentifier("replyFromHomeSegue", sender: self)
     }
-    */
-
 }

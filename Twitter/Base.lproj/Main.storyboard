@@ -228,10 +228,10 @@
             </objects>
             <point key="canvasLocation" x="576" y="-301"/>
         </scene>
-        <!--View Controller-->
+        <!--Compose View Controller-->
         <scene sceneID="sVp-07-fvU">
             <objects>
-                <viewController id="q0L-GH-yZe" sceneMemberID="viewController">
+                <viewController id="q0L-GH-yZe" customClass="ComposeViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kja-zA-8id"/>
                         <viewControllerLayoutGuide type="bottom" id="dWx-h0-RVr"/>
@@ -240,23 +240,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@JohnDoe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnH-85-fnX">
-                                <rect key="frame" x="38" y="129" width="84" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WsR-pr-44l">
-                                <rect key="frame" x="25" y="163" width="265" height="260"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Comment?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WsR-pr-44l">
+                                <rect key="frame" x="20" y="163" width="280" height="135"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" red="0.57457386363636365" green="0.57457386363636365" blue="0.57457386363636365" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="In reply to John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aga-1j-0Zy">
-                                <rect key="frame" x="38" y="100" width="154" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remaining:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmK-ty-TOI">
+                                <rect key="frame" x="107" y="351" width="67" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hhb-qs-455">
+                                <rect key="frame" x="228" y="344" width="56" height="30"/>
+                                <color key="backgroundColor" red="0.41832220352353389" green="0.80309042821324417" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Tweet">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTweet:" destination="q0L-GH-yZe" eventType="touchDown" id="9g2-bG-t7T"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="140" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbB-KA-UNr">
+                                <rect key="frame" x="188" y="352" width="23" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -269,6 +279,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="commentTextView" destination="WsR-pr-44l" id="jKq-nr-IWJ"/>
+                        <outlet property="remainingLabel" destination="vbB-KA-UNr" id="ayY-Um-Zeo"/>
+                        <outlet property="tweetButton" destination="Hhb-qs-455" id="Shc-1X-jlB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jd5-9v-o6N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -371,6 +386,7 @@
                                                     <state key="normal" title="Button" image="ReplyIcon"/>
                                                     <connections>
                                                         <action selector="onReply:" destination="jGb-Jh-vJT" eventType="touchUpInside" id="GgV-Es-o0x"/>
+                                                        <segue destination="q0L-GH-yZe" kind="modal" identifier="replyFromHomeSegue" id="l4h-Xg-mwU"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -444,7 +460,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qxY-6y-VZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1102" y="321"/>
+            <point key="canvasLocation" x="835" y="370"/>
         </scene>
         <!--Tweet Details View Controller-->
         <scene sceneID="tUy-4J-PAs">
@@ -458,10 +474,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTk-79-Yt9">
-                                <rect key="frame" x="15" y="79" width="70" height="70"/>
-                                <state key="normal" title="Button" image="TwitterLogoBlue"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="John Doe" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RjD-z2-IdQ">
                                 <rect key="frame" x="106" y="90" width="166" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -539,6 +551,9 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TwitterLogoBlueSmall" translatesAutoresizingMaskIntoConstraints="NO" id="dOE-gx-UYl">
+                                <rect key="frame" x="25" y="73" width="70" height="70"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -550,10 +565,10 @@
                         <outlet property="handleLabel" destination="HvP-Cd-Kus" id="NOq-XB-0gn"/>
                         <outlet property="messageLabel" destination="2CS-28-t2X" id="ol8-RI-1Lz"/>
                         <outlet property="nameLabel" destination="RjD-z2-IdQ" id="yNs-Eq-ZHS"/>
+                        <outlet property="profileThumbImageView" destination="dOE-gx-UYl" id="LLV-eq-pFl"/>
                         <outlet property="replyButton" destination="zdy-0D-9e9" id="MFh-HV-od5"/>
                         <outlet property="retweetButton" destination="CR1-pI-jVp" id="wbY-Iz-wqn"/>
                         <outlet property="retweetNumberLabel" destination="4yH-Zj-7wp" id="bl9-8b-PLJ"/>
-                        <outlet property="userImageThubButton" destination="bTk-79-Yt9" id="dCY-sx-dO2"/>
                         <outlet property="userProfileImageView" destination="X8A-PE-Z5n" id="9dT-5T-40x"/>
                         <outlet property="userURLLabel" destination="tvI-gS-tRY" id="RMl-C7-4VZ"/>
                     </connections>
@@ -592,6 +607,7 @@
         <image name="TwitterLogoWhite" width="843" height="843"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TdS-N8-ryJ"/>
+        <segue reference="Dy6-xZ-i4M"/>
+        <segue reference="l4h-Xg-mwU"/>
     </inferredMetricsTieBreakers>
 </document>
