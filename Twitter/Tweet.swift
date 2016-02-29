@@ -22,16 +22,7 @@ class Tweet: NSObject {
     var retweeted: Bool?
     
     
-//    init(dictionary: NSDictionary) {
-//        
-//        user = User(jsonData: JSON( dictionary["user"]! ) )
-//        text = dictionary["text"] as? String
-//        createdAtString = dictionary["created_at"] as? String
-//        
-//        let formatter = NSDateFormatter()
-//        formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
-//        createdAt = formatter.dateFromString(createdAtString!)
-//    }
+    var mediaURL: NSURL?
     
     init(jsonData: JSON) {
         
@@ -48,6 +39,10 @@ class Tweet: NSObject {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
         createdAt = formatter.dateFromString(createdAtString!)
+        
+       
+        let urlString = jsonData["entities"]["media"][0]["media_url"].stringValue
+        mediaURL = NSURL(string: urlString)
         
     }
     

@@ -163,6 +163,16 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "detailsSegue" {
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPathForCell(cell)
+            let detailsViewController = segue.destinationViewController as! TweetDetailsViewController
+            detailsViewController.tweet = tweets![indexPath!.row]
+            detailsViewController.user = tweets![indexPath!.row].user!
+        }
+    }
 
     /*
     // MARK: - Navigation
