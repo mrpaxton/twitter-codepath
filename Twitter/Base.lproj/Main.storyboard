@@ -148,6 +148,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="JBJ-Ne-nPk"/>
                     <connections>
                         <outlet property="handleLabel" destination="Dft-vK-4cP" id="6Nv-GT-6zH"/>
                         <outlet property="headerImageView" destination="qL2-iC-uTQ" id="oYc-tF-qDN"/>
@@ -314,10 +315,14 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TwitterLogoBlue" translatesAutoresizingMaskIntoConstraints="NO" id="4g6-7Z-PmS">
                                                     <rect key="frame" x="10" y="10" width="50" height="50"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="Tkk-fl-YEB"/>
                                                         <constraint firstAttribute="height" constant="50" id="tIP-EM-rjc"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="ukS-9d-di1" appends="YES" id="aNp-Ni-EbG"/>
+                                                    </connections>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3s-1K-Tk0">
                                                     <rect key="frame" x="223" y="111" width="15" height="15"/>
@@ -456,9 +461,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="JWH-y7-ElF" id="WDN-bw-jSy"/>
+                        <segue destination="b38-zX-OZM" kind="push" identifier="profileSegue" id="YEa-Xj-S2c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qxY-6y-VZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ukS-9d-di1"/>
             </objects>
             <point key="canvasLocation" x="835" y="370"/>
         </scene>

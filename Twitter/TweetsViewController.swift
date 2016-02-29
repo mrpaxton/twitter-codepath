@@ -9,17 +9,14 @@
 import UIKit
 import AFNetworking
 
-class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TweetCellDelegate {
-    
-    func tweetCell(tweetCell: TweetCell, didUpdateTweetCell tweetUpdated: Bool) {
-        print("tweetCell favourite incremented")
-        print(tweetCell.tweet.user?.createdAt!)
-    }
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TweetCellDelegate {    
     
     @IBOutlet weak var tableView: UITableView!
     
     var tweets: [Tweet]?
     var userScreenName: String?
+    
+    var selectedTweet: Tweet!
     
     
     var refreshControl: UIRefreshControl!
@@ -178,6 +175,12 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             let composeViewController = segue.destinationViewController as! ComposeViewController
             composeViewController.replyToUserScreenName = userScreenName
         }
+        
+        if segue.identifier == "profileSegue" {
+            let profileViewController = segue.destinationViewController as! ProfileViewController
+            profileViewController.user = selectedTweet.user
+            //profileViewController.tweet = selectedTweet
+        }
     }
     
     func didReply(tweetCell: TweetCell) {
@@ -185,5 +188,11 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         // get the selected user screen name
         userScreenName = tweetCell.tweet.user?.screenName
         performSegueWithIdentifier("replyFromHomeSegue", sender: self)
+    }
+    
+    func didTapProfileThumb(tweetCell: TweetCell, selectedTweet: Tweet) {
+        print("=========== in didTapProfileThumb()" )
+        self.selectedTweet = selectedTweet
+        self.performSegueWithIdentifier("profileSegue", sender: self)
     }
 }

@@ -20,7 +20,21 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var numberFollowings: UILabel!
     @IBOutlet weak var numberFollowers: UILabel!
     
-    var user: User!
+    var user: User! {
+        didSet {
+            nameLabel.text = user.name
+            handleLabel.text = user.screenName
+            let headerURL = NSURL(string: user.profileImageUrl!)
+            let thumbURL = NSURL(string: user.profileBannerImageUrl!)
+            headerImageView.setImageWithURL(headerURL!)
+            profileThumbImageView.setImageWithURL(thumbURL!)
+            locationLabel.text = user.location
+            userDescriptionLabel.text = user.description
+            numberTweets.text = String(user.statusesCount)
+            numberFollowings.text = String(user.friendsCount)
+            numberFollowers.text = String(user.followersCount)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

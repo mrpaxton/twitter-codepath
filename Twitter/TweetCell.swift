@@ -10,8 +10,8 @@ import UIKit
 import SwiftMoment
 
 protocol TweetCellDelegate {
-    func tweetCell( tweetCell: TweetCell, didUpdateTweetCell tweetUpdated:Bool )
     func didReply(tweetCell: TweetCell)
+    func didTapProfileThumb(tweetCell: TweetCell, selectedTweet: Tweet)
 }
 
 class TweetCell: UITableViewCell {
@@ -39,14 +39,28 @@ class TweetCell: UITableViewCell {
             tweetId = tweet.id
             let url = NSURL( string: ( tweet.user?.profileImageUrl!)! )
             print(url!)
-            profileImage.setImageWithURL(url!)
+            
             screenNameLabel.text = "@\((tweet.user?.screenName)!)"
             nameLabel.text = tweet.user?.name
             tweetTextLabel.text = tweet.text
             retweetCountLabel.text = String(tweet.retweetCount!)
             favouriteCountLabel.text = String(tweet.favouriteCount!)
             timeAgoLabel.text = durationString(tweet.createdAt!)
+            
+            
+            profileImage.setImageWithURL(url!)
+            
+            //add a tap gesture recognizer to the profile image view
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("onImageTapped:"))
+            profileImage.addGestureRecognizer(tapGestureRecognizer)
+            profileImage.userInteractionEnabled = true
+            
         }
+    }
+    
+    func onImageTapped(sender: UIGestureRecognizer) {
+        print("=========== onTappedImage")
+        self.delegate?.didTapProfileThumb(self, selectedTweet: tweet)
     }
 
     @IBAction func onReply(sender: AnyObject) {
@@ -101,10 +115,7 @@ class TweetCell: UITableViewCell {
                 //reset favouriteCount
                 self.tweet.favouriteCount = self.tweet.favouriteCount < 0 ? 0 : self.tweet.favouriteCount
                 //update favourite count label
-                self.favouriteCountLabel.text = "\(self.tweet.favouriteCount!)"
-                //delegate
-                self.delegate?.tweetCell(self, didUpdateTweetCell: true)
-            }
+                self.favouriteCountLabel.text = "\(self.tweet.favouriteCount!)"            }
         } else {
             //call unfavouriteStatus
             TwitterClient.sharedInstance.unfavoriteStatus(tweetId) { error in
