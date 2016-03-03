@@ -32,6 +32,7 @@ The following **additional** features are implemented:
 - [x] User image thumb on the tweet detail page can link to the user profile page
 - [x] Images are loaded on tweet detail page if available
 - [x] Tab bar for navigation on the bottom
+- [x] reply button also shows the ComposeViewController with the user's screen name
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
