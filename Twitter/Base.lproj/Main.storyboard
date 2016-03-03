@@ -577,6 +577,9 @@
                                     <constraint firstAttribute="height" constant="20" id="uUc-eU-Bg0"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="ReplyIcon"/>
+                                <connections>
+                                    <action selector="onReply:" destination="HGp-pk-ss1" eventType="touchUpInside" id="iaQ-uo-dfp"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CR1-pI-jVp">
                                 <rect key="frame" x="134" y="427" width="20" height="20"/>
@@ -585,6 +588,9 @@
                                     <constraint firstAttribute="width" constant="20" id="HIy-3g-FQb"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="RetweetIcon"/>
+                                <connections>
+                                    <action selector="onRetweet:" destination="HGp-pk-ss1" eventType="touchUpInside" id="ecp-0K-Mu3"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="32" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yH-Zj-7wp">
                                 <rect key="frame" x="164" y="429" width="27" height="15"/>
@@ -599,6 +605,9 @@
                                     <constraint firstAttribute="width" constant="20" id="k83-JQ-iC7"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="LikeIcon"/>
+                                <connections>
+                                    <action selector="onFavourite:" destination="HGp-pk-ss1" eventType="touchUpInside" id="E7g-DM-So3"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="32" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="26p-FW-w1Q">
                                 <rect key="frame" x="241" y="429" width="31" height="15"/>

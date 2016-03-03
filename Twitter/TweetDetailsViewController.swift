@@ -8,6 +8,11 @@
 
 import UIKit
 
+
+protocol TweetDetailsViewControllerDelegate {
+    func didTapProfileThumbOnTweetDetailsPage(tweetDetailsViewController: TweetDetailsViewController, selectedTweet: Tweet)
+}
+
 class TweetDetailsViewController: UIViewController {
     
     
@@ -25,6 +30,8 @@ class TweetDetailsViewController: UIViewController {
 
     @IBOutlet weak var retweetNumberLabel: UILabel!
     @IBOutlet weak var favouriteNumberLabel: UILabel!
+    
+    var delegate: TweetDetailsViewControllerDelegate!
     
     var tweet: Tweet!
     var user: User!
@@ -53,6 +60,27 @@ class TweetDetailsViewController: UIViewController {
         favouriteNumberLabel.text = "\(user.favouritesCount!)"
         
         
+        //add a tap gesture recognizer to the profile image view
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("onImageTapped:"))
+        profileThumbImageView.addGestureRecognizer(tapGestureRecognizer)
+        profileThumbImageView.userInteractionEnabled = true
+
+        
+        
+    }
+    
+    func onImageTapped(sender: UIGestureRecognizer) {
+        self.delegate?.didTapProfileThumbOnTweetDetailsPage(self, selectedTweet: tweet)
+    }
+
+    
+    @IBAction func onReply(sender: AnyObject) {
+    }
+    
+    @IBAction func onRetweet(sender: AnyObject) {
+    }
+    
+    @IBAction func onFavourite(sender: AnyObject) {
     }
     
     func customizeFrame(userProfileImageView: UIImageView) {

@@ -9,7 +9,7 @@
 import UIKit
 import AFNetworking
 
-class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TweetCellDelegate {    
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TweetCellDelegate, TweetDetailsViewControllerDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -170,6 +170,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             let detailsViewController = segue.destinationViewController as! TweetDetailsViewController
             detailsViewController.tweet = tweets![indexPath!.row]
             detailsViewController.user = tweets![indexPath!.row].user!
+            detailsViewController.delegate = self
+            
         }
         
         if segue.identifier == "replyFromHomeSegue" {
@@ -197,4 +199,12 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         self.selectedUser = tweetCell.tweet.user
         self.performSegueWithIdentifier("profileSegue", sender: self)
     }
+    
+    func didTapProfileThumbOnTweetDetailsPage(tweetDetailsViewController: TweetDetailsViewController, selectedTweet: Tweet) {
+        print("=========== in didTapProfileThumbOnDetailsPage()" )
+        self.selectedTweet = selectedTweet
+        self.selectedUser = tweetDetailsViewController.tweet.user
+        self.performSegueWithIdentifier("profileSegue", sender: self)
+    }
+    
 }
