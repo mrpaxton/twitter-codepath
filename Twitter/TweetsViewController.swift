@@ -17,6 +17,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     var userScreenName: String?
     
     var selectedTweet: Tweet!
+    var selectedUser: User!
     
     
     var refreshControl: UIRefreshControl!
@@ -178,7 +179,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
         if segue.identifier == "profileSegue" {
             let profileViewController = segue.destinationViewController as! ProfileViewController
-            profileViewController.user = selectedTweet.user
+            profileViewController.user = self.selectedUser
             //profileViewController.tweet = selectedTweet
         }
     }
@@ -193,6 +194,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     func didTapProfileThumb(tweetCell: TweetCell, selectedTweet: Tweet) {
         print("=========== in didTapProfileThumb()" )
         self.selectedTweet = selectedTweet
+        self.selectedUser = tweetCell.tweet.user
         self.performSegueWithIdentifier("profileSegue", sender: self)
     }
 }

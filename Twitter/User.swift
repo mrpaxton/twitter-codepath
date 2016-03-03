@@ -44,8 +44,7 @@ class User: NSObject {
         userDescription = jsonData["description"].stringValue
         userURL = jsonData["url"].stringValue
         profileImageUrl = jsonData["profile_image_url"].stringValue
-        profileImageUrl = jsonData["profile_banner_url"].stringValue
-        //tagline = jsonData["description"].stringValue
+        profileBannerImageUrl = jsonData["profile_banner_url"].stringValue
         statusesCount = jsonData["statuses_count"].intValue
         friendsCount = jsonData["friends_count"].intValue
         followersCount = jsonData["followers_count"].intValue

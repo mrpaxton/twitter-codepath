@@ -20,40 +20,26 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var numberFollowings: UILabel!
     @IBOutlet weak var numberFollowers: UILabel!
     
-    var user: User! {
-        didSet {
-            nameLabel.text = user.name
-            handleLabel.text = user.screenName
-            let headerURL = NSURL(string: user.profileImageUrl!)
-            let thumbURL = NSURL(string: user.profileBannerImageUrl!)
-            headerImageView.setImageWithURL(headerURL!)
-            profileThumbImageView.setImageWithURL(thumbURL!)
-            locationLabel.text = user.location
-            userDescriptionLabel.text = user.description
-            numberTweets.text = String(user.statusesCount)
-            numberFollowings.text = String(user.friendsCount)
-            numberFollowers.text = String(user.followersCount)
-        }
-    }
-    
+    var user: User!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
-        if let user = User.currentUser {
-            nameLabel.text = user.name
-            handleLabel.text = user.screenName
-            let headerURL = NSURL(string: user.profileImageUrl!)
-            let thumbURL = NSURL(string: user.profileBannerImageUrl!)
-            headerImageView.setImageWithURL(headerURL!)
-            profileThumbImageView.setImageWithURL(thumbURL!)
-            locationLabel.text = user.location
-            userDescriptionLabel.text = user.description
-            numberTweets.text = String(user.statusesCount)
-            numberFollowings.text = String(user.friendsCount)
-            numberFollowers.text = String(user.followersCount)
-            
-        }
+//        if let user = User.currentUser {
+//            
+//            
+//        }
+        
+        nameLabel.text = user.name!
+        handleLabel.text = "@\(user.screenName!)"
+        userDescriptionLabel.text = user.userDescription!
+        let headerURL = NSURL(string: user.profileBannerImageUrl!)
+        let thumbURL = NSURL(string: user.profileImageUrl!)
+        headerImageView.setImageWithURL(headerURL!)
+        profileThumbImageView.setImageWithURL(thumbURL!)
+        locationLabel.text = user.location!
+        numberTweets.text = String(user.statusesCount!)
+        numberFollowings.text = String(user.friendsCount!)
+        numberFollowers.text = String(user.followersCount!)
     }
 
     override func didReceiveMemoryWarning() {
