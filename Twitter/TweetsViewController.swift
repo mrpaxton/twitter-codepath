@@ -189,7 +189,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     func didReply(tweetCell: TweetCell) {
         print("Did Reply")
         // get the selected user screen name
-        userScreenName = tweetCell.tweet.user?.screenName
+        userScreenName = tweetCell.tweet.user?.screenName!
         performSegueWithIdentifier("replyFromHomeSegue", sender: self)
     }
     

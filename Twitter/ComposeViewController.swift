@@ -24,7 +24,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
         // Do any additional setup after loading the view.
         
         if (replyToUserScreenName != nil){
-            commentTextView.text = "@\(replyToUserScreenName)"
+            commentTextView.text = "@\(replyToUserScreenName!)"
             commentTextView.textColor = UIColor.blackColor()
         }
     }
