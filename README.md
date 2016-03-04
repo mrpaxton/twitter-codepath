@@ -34,6 +34,12 @@ The following **additional** features are implemented:
 - [x] Tab bar for navigation on the bottom
 - [x] reply button also shows the ComposeViewController with the user's screen name
 
+Here's a walkthrough of implemented user stories:
+
+![ALT TEXT](twitter-walkthrough2.gif)
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
 1. More on the delegate pattern
